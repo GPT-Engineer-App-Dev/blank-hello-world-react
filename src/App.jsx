@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Index />} />
-      <Route path="/events" element={<Events />} />
+        <Route path="/events" element={<Events />} />
       </Routes>
     </Router>
   );

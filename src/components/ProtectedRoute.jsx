@@ -1,10 +1,9 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { SupabaseAuthContext } from '../integrations/supabase/SupabaseAuthProvider.jsx';
+import { useSupabaseAuth } from '../integrations/supabase/auth.jsx';
 
 const ProtectedRoute = ({ children }) => {
-  const { session } = useContext(SupabaseAuthContext);
+  const { session } = useSupabaseAuth();
 
   if (!session) {
     return <Navigate to="/login" />;

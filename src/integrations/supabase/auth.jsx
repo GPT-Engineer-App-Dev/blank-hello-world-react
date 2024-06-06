@@ -27,7 +27,7 @@ export const SupabaseAuthProviderInner = ({ children }) => {
       const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
       if (session) {
-        window.location.href = '/';
+        navigate('/');
       }
     };
 
@@ -35,7 +35,7 @@ export const SupabaseAuthProviderInner = ({ children }) => {
       setSession(session);
       queryClient.invalidateQueries('user');
       if (session) {
-        window.location.href = '/';
+        navigate('/');
       }
     });
 
@@ -44,7 +44,7 @@ export const SupabaseAuthProviderInner = ({ children }) => {
     return () => {
       authListener.subscription.unsubscribe();
     };
-  }, [queryClient]);
+  }, [queryClient, navigate]);
 
   const logout = async () => {
     await supabase.auth.signOut();
